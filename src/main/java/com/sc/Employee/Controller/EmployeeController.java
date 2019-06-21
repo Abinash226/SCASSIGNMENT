@@ -34,8 +34,8 @@ public class EmployeeController {
 	@PostMapping
 	@ApiOperation("Creates a new Employee.")
 	public ResponseEntity<Employee> addEmployee(@ApiParam("Personal information for a new Employee to be created.") @RequestBody Employee emp) {
-		if(emp.getFirstName() == null || emp.getLastName() ==null || emp.getDateOfBirth() == null || emp.getGender() == null) 
-			throw new DetailsNotFoundException("FIRSTNAME, LASTNAME, DOB,GENDER are mandaatory");
+		/*if(emp.getFirstName() == null || emp.getLastName() ==null || emp.getDateOfBirth() == null || emp.getGender() == null) 
+			throw new DetailsNotFoundException("FIRSTNAME, LASTNAME, DOB,GENDER are mandatory");*/
 		Employee employee = empService.addEmployee(emp);
 		return new ResponseEntity<>(employee,HttpStatus.CREATED);
 	}
