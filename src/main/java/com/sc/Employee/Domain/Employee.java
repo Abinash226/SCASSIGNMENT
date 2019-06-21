@@ -3,6 +3,7 @@ package com.sc.Employee.Domain;
 import java.time.LocalDate;
 import java.util.Comparator;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,17 +29,21 @@ public class Employee {
 	private Long employeeId;
 	@NotNull(message = "The first Name must not be null")
 	@ApiModelProperty(notes = "The employee first name")
+	@Column(nullable = false)
 	private String firstName;
 	@NotNull(message = "The lastName must not be null")
 	@ApiModelProperty(notes = "The employee last name")
+	@Column(nullable = false)
 	private String lastName;
 	@NotNull(message = "The Gender must not be null")
 	@ApiModelProperty(notes = "The employee Gender")
+	@Column(nullable = false)
 	private String gender;
 	@ApiModelProperty(notes = "The employee Department")
 	private String department;
 	@NotNull(message = "The DOB must not be null")
 	@ApiModelProperty(notes = "The employee DOB")
+	@Column(nullable = false)
 	private LocalDate dateOfBirth;
 
 	public static Comparator<Employee> byFirstName = 
