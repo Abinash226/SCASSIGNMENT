@@ -21,14 +21,14 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long employeeId;
-	@NotNull
+	@NotNull(message = "The first Name must not be null")
 	private String firstName;
-	@NotNull
+	@NotNull(message = "The lastName must not be null")
 	private String lastName;
-	@NotNull
+	@NotNull(message = "The Gender must not be null")
 	private String gender;
 	private String department;
-	@NotNull
+	@NotNull(message = "The DOB must not be null")
 	private String dateOfBirth;
 
 	public static Comparator<Employee> byFirstName = 
