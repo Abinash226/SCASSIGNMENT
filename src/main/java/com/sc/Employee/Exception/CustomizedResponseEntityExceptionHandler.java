@@ -25,5 +25,12 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
         request.getDescription(false));
     return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
   }
+  
+  @ExceptionHandler(DetailsNotFoundException.class)
+  public final ResponseEntity<ErrorDetails> handleUserNotFoundException(DetailsNotFoundException ex, WebRequest request) {
+    ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(),
+        request.getDescription(false));
+    return new ResponseEntity<>(errorDetails, HttpStatus.UNPROCESSABLE_ENTITY);
+  }
 
 }
