@@ -1,5 +1,7 @@
 package com.sc.Employee.Domain;
 
+import java.util.Comparator;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +26,7 @@ public class Employee {
 	private String department;
 	private String dateOfBirth;
 
-	/*public static Comparator<Employee> byFirstName = 
-			(Employee o1, Employee o2)->o1.getFirstName().compareTo(o2.getFirstName());*/
+	public static Comparator<Employee> byFirstName = 
+			(Employee o1, Employee o2)->o1.getFirstName().toLowerCase().compareTo(o2.getFirstName().toLowerCase());
 
 }

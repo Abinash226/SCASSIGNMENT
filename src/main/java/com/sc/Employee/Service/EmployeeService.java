@@ -1,5 +1,6 @@
 package com.sc.Employee.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +14,14 @@ public class EmployeeService {
 	@Autowired
 	private EmployeeRepository empRepo;
 	
-	public Employee addEmployee(Employee emp) {
-		emp.setFirstName(emp.getFirstName().toLowerCase());
+	public Employee addEmployee(Employee emp) {	
 		return empRepo.saveAndFlush(emp);
 	}
 	
 	public List<Employee> byFirstName(){
-		return empRepo.findAllByOrderByFirstNameAsc();
+		List<Employee> emplist = empRepo.findAll();
+		Collections.sort(emplist, Employee.byFirstName);
+		return emplist;
 	}
 
 	public void deleteAll(Long id) {
