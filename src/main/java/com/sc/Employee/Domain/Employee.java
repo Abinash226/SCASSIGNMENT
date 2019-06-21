@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,19 +18,26 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
+@ApiModel(description = "All details about the Employee. ")
 public class Employee {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@ApiModelProperty(notes = "The database generated employee ID")
 	private Long employeeId;
 	@NotNull(message = "The first Name must not be null")
+	@ApiModelProperty(notes = "The employee first name")
 	private String firstName;
 	@NotNull(message = "The lastName must not be null")
+	@ApiModelProperty(notes = "The employee last name")
 	private String lastName;
 	@NotNull(message = "The Gender must not be null")
+	@ApiModelProperty(notes = "The employee Gender")
 	private String gender;
+	@ApiModelProperty(notes = "The employee Department")
 	private String department;
 	@NotNull(message = "The DOB must not be null")
+	@ApiModelProperty(notes = "The employee DOB")
 	private String dateOfBirth;
 
 	public static Comparator<Employee> byFirstName = 
