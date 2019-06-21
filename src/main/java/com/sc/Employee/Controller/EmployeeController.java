@@ -47,12 +47,4 @@ public class EmployeeController {
 		return new ResponseEntity<List<Employee>>(empService.byFirstName(),HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/{id}")
-	@ApiOperation("Deletes all employee.")
-	public ResponseEntity<HttpStatus> removeEmployee (@PathVariable("id") Long id)
-	{
-		empService.deleteAll(id);
-	    return new ResponseEntity<HttpStatus>(HttpStatus.ACCEPTED);
-	}
-
 }
