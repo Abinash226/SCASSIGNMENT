@@ -1,5 +1,6 @@
 package com.sc.Employee.Domain;
 
+import java.time.LocalDate;
 import java.util.Comparator;
 
 import javax.persistence.Entity;
@@ -38,7 +39,7 @@ public class Employee {
 	private String department;
 	@NotNull(message = "The DOB must not be null")
 	@ApiModelProperty(notes = "The employee DOB")
-	private String dateOfBirth;
+	private LocalDate dateOfBirth;
 
 	public static Comparator<Employee> byFirstName = 
 			(Employee o1, Employee o2)->o1.getFirstName().toLowerCase().compareTo(o2.getFirstName().toLowerCase());

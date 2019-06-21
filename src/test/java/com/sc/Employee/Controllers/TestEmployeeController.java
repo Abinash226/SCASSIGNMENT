@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,8 +38,8 @@ public class TestEmployeeController {
 	public void getAllEmployeesAPI() throws Exception
 	{
 		List<Employee> employees = Arrays.asList(
-                new Employee(1L, "Abinash","eqew","wrerw","rew","ewwre"),
-                new Employee(2L, "Mohanty","eqew","wrerw","rew","ewwre"));
+                new Employee(1L, "Abinash","eqew","wrerw","rew",LocalDate.now()),
+                new Employee(2L, "Mohanty","eqew","wrerw","rew",LocalDate.now()));
 		when(eService.byFirstName()).thenReturn(employees);
 		
 		mvc.perform( MockMvcRequestBuilders
@@ -54,7 +55,7 @@ public class TestEmployeeController {
 	@Test
 	public void createEmployeeAPI() throws Exception
 	{
-		Employee emp = new Employee(1L, "Abinash", "Mohanty", "Male","AM&C","22-06-1993");
+		Employee emp = new Employee(1L, "Abinash", "Mohanty", "Male","AM&C",LocalDate.now());
 		when(eService.addEmployee(emp)).thenReturn(emp);
 		mvc.perform( MockMvcRequestBuilders
 				.post("/employees")
