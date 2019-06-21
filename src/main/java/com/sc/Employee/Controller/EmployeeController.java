@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sc.Employee.Domain.Employee;
-import com.sc.Employee.Exception.DetailsNotFoundException;
 import com.sc.Employee.Exception.EmployeeNotFoundException;
 import com.sc.Employee.Service.EmployeeService;
 
@@ -34,8 +33,6 @@ public class EmployeeController {
 	@PostMapping
 	@ApiOperation("Creates a new Employee.")
 	public ResponseEntity<Employee> addEmployee(@ApiParam("Personal information for a new Employee to be created.") @RequestBody Employee emp) {
-		/*if(emp.getFirstName() == null || emp.getLastName() ==null || emp.getDateOfBirth() == null || emp.getGender() == null) 
-			throw new DetailsNotFoundException("FIRSTNAME, LASTNAME, DOB,GENDER are mandatory");*/
 		Employee employee = empService.addEmployee(emp);
 		return new ResponseEntity<>(employee,HttpStatus.CREATED);
 	}
@@ -45,7 +42,7 @@ public class EmployeeController {
 	public ResponseEntity<List<Employee>> getAllbyFirstname(){
 		List<Employee> employees = empService.byFirstName();
 		if(employees.isEmpty() || employees.size() ==0) throw new EmployeeNotFoundException("NO EMPLOYEES EXIST");
-		return new ResponseEntity<List<Employee>>(empService.byFirstName(),HttpStatus.OK);
+		return new ResponseEntity<List<Employee>>(employees,HttpStatus.OK);
 	}
 	
 }
