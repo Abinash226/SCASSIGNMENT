@@ -1,11 +1,10 @@
 package com.sc.Employee;
 
-import java.util.Collections;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
@@ -32,16 +31,14 @@ public class EmployeeApplication {
     }
 	
 	@SuppressWarnings("unused")
-	private ApiInfo getApiInfo() {
-	    return new ApiInfo(
-	            "EMPLOYEE PORTAL",
-	            "DETAILS TO ADD,DELETE,FETCH,UPDATE",
-	            "1",
-	            "TERMS OF SERVICE URL",
-	            new Contact("ABINASH","URL","abinashm226@gmail.com"),
-	            "LICENSE",
-	            "LICENSE URL",
-	            Collections.emptyList()
-	    );
-	}
+	private ApiInfo apiEndPointsInfo() {
+        return new ApiInfoBuilder().title("EMPLOYEE PORTAL API")
+            .description("Employee Management REST API")
+            .contact(new Contact("ABINASH MOHANTY", "www.google.com", "abinashm226@gmail.com"))
+            .license("Apache 2.0")
+            .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
+            .version("1.0.0")
+            .build();
+    }
+
 }
