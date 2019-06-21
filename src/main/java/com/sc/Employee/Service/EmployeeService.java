@@ -14,6 +14,7 @@ public class EmployeeService {
 	private EmployeeRepository empRepo;
 	
 	public Employee addEmployee(Employee emp) {
+		emp.setFirstName(emp.getFirstName().toLowerCase());
 		return empRepo.saveAndFlush(emp);
 	}
 	
