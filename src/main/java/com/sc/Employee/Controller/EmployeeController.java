@@ -55,4 +55,9 @@ public class EmployeeController {
 		return new ResponseEntity<List<Employee>>(employees,HttpStatus.OK);
 	}
 	
+	@GetMapping("/test")
+	public String test() {
+		return "success";
+	}
+	
 }
