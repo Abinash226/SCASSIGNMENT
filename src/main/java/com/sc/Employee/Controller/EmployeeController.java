@@ -35,10 +35,9 @@ public class EmployeeController {
 	@PostMapping
 	@ApiOperation("Creates a new Employee.")
 	public ResponseEntity<Employee> addEmployee(@ApiParam("Personal information for a new Employee to be created.") @RequestBody Employee emp) {
-		System.out.println("********************"+emp);
 		emp.setDateOfBirth(emp.getDateOfBirth().plusDays(1));
 		Employee employee = empService.addEmployee(emp);
-		return new ResponseEntity<>(employee,HttpStatus.CREATED);
+		return new ResponseEntity<Employee>(employee,HttpStatus.CREATED);
 	}
 	
 	@GetMapping
@@ -57,6 +56,11 @@ public class EmployeeController {
 	
 	@GetMapping("/test")
 	public String test() {
+		return "success";
+	}
+	
+	@GetMapping("/test1")
+	public String test1() {
 		return "success";
 	}
 	
